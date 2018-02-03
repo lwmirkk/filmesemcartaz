@@ -65,8 +65,38 @@ def NotasEspectadores(page_id):
                 
     return jsonify({'filmes': data})    
 
+@app.route('/api/v1/filmes/emcartaz', methods=['GET'])
+def EmCartaz():
+    URL = "http://www.adorocinema.com/filmes/numero-cinemas/"
+    
+    html_doc = urlopen(URL).read()
+    soup = BeautifulSoup(html_doc, "html.parser")
+
+    data = []
+    for dataBox in soup.find_all("div", class_="card card-entity card-entity-list cf"):
+        nomeObj = dataBox.find("h2", class_="meta-title")
+        imgObj = dataBox.find(class_="thumbnail ")
+        sinopseObj = dataBox.find("div", class_="synopsis")
+        dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
+        movieLinkObj = dataBox.find(class_="meta-title-link")
+        detailsLink = 'http://www.adorocinema.com' + movieLinkObj.attrs['href']
+
+        #LOAD FULL SINOPSE 
+        htmldocMovieDetail = urlopen(detailsLink).read()
+        soupMovieDetail = BeautifulSoup(htmldocMovieDetail, "html.parser")
+        fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
+
+        data.append({   'nome': nomeObj.text.strip(),
+                        'poster' : imgObj.img['data-src'].strip(),
+                        'sinopse' : sinopseObj.text.strip(),
+                        'data' :  dataObj.text[1:23].strip().replace('/',' '),
+                        'link' : detailsLink,
+                        'sinopseFull': fullSinopse.text})
+                
+    return jsonify({'filmes': data})
+
 @app.route('/api/v1/filmes/emcartaz/<page_id>', methods=['GET'])
-def EmCartaz(page_id):
+def EmCartazPagina(page_id):
     URL = "http://www.adorocinema.com/filmes/numero-cinemas/?page={}".format(page_id)
     
     html_doc = urlopen(URL).read()
