@@ -66,8 +66,8 @@ def NotasEspectadores(page_id):
     return jsonify({'filmes': data})    
 
 @app.route('/api/v1/filmes/emcartaz/<page_id>', methods=['GET'])
-def EmCartaz():
-    URL = "http://www.adorocinema.com/filmes/numero-cinemas/".format(page_id)
+def EmCartaz(page_id):
+    URL = "http://www.adorocinema.com/filmes/numero-cinemas/?page={}".format(page_id)
     
     html_doc = urlopen(URL).read()
     soup = BeautifulSoup(html_doc, "html.parser")
