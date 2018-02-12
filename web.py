@@ -88,7 +88,7 @@ def EmCartaz():
         fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
 
         data.append({   'nome': nomeObj.text.strip(),
-                        'info': infoObj.text.strip().replace('/',' ').replace('\n','').replace('  ',' '),
+                        'info': infoObj.text.strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' '),
                         'poster' : imgObj.img['data-src'].strip(),
                         'sinopse' : sinopseObj.text.strip(),
                         'data' :  dataObj.text[1:23].strip().replace('/',' '),
