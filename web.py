@@ -77,6 +77,7 @@ def EmCartaz():
         nomeObj = dataBox.find("h2", class_="meta-title")
         duracaoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
         duracaoObj = duracaoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip()
+        duracaoObj = duracaoObj[0:8].strip()
         imgObj = dataBox.find(class_="thumbnail ")
         sinopseObj = dataBox.find("div", class_="synopsis")
         dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
@@ -110,7 +111,7 @@ def EmCartazPagina(page_id):
         nomeObj = dataBox.find("h2", class_="meta-title")
         duracaoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
         duracaoObj = duracaoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip()
-        duracaoObj = duracaoObj[1:8]
+        duracaoObj = duracaoObj[0:8].strip()
         imgObj = dataBox.find(class_="thumbnail ")
         sinopseObj = dataBox.find("div", class_="synopsis")
         dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
