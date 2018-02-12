@@ -105,6 +105,7 @@ def EmCartazPagina(page_id):
     data = []
     for dataBox in soup.find_all("div", class_="card card-entity card-entity-list cf"):
         nomeObj = dataBox.find("h2", class_="meta-title")
+        infoObj = dataBox.find("div", class_="meta-body-item meta-body-info")
         imgObj = dataBox.find(class_="thumbnail ")
         sinopseObj = dataBox.find("div", class_="synopsis")
         dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
@@ -117,6 +118,7 @@ def EmCartazPagina(page_id):
         fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
 
         data.append({   'nome': nomeObj.text.strip(),
+                        'info': infoObj.text.strip(),
                         'poster' : imgObj.img['data-src'].strip(),
                         'sinopse' : sinopseObj.text.strip(),
                         'data' :  dataObj.text[1:23].strip().replace('/',' '),
