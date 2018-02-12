@@ -120,7 +120,7 @@ def EmCartazPagina(page_id):
         fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
 
         data.append({   'nome': nomeObj.text.strip(),
-                        'duracao': infoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip().text[1:8].strip(),
+                        'duracao': infoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip().text[1:8],
                         'poster' : imgObj.img['data-src'].strip(),
                         'sinopse' : sinopseObj.text.strip(),
                         'data' :  dataObj.text[1:23].strip().replace('/',' '),
