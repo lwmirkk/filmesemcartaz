@@ -75,7 +75,8 @@ def EmCartaz():
     data = []
     for dataBox in soup.find_all("div", class_="card card-entity card-entity-list cf"):
         nomeObj = dataBox.find("h2", class_="meta-title")
-        infoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
+        duracaoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
+        duracaoObj = duracaoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip()
         imgObj = dataBox.find(class_="thumbnail ")
         sinopseObj = dataBox.find("div", class_="synopsis")
         dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
@@ -88,7 +89,7 @@ def EmCartaz():
         fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
 
         data.append({   'nome': nomeObj.text.strip(),
-                        'duracao': infoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip(),
+                        'duracao': duracaoObj,
                         'poster' : imgObj.img['data-src'].strip(),
                         'sinopse' : sinopseObj.text.strip(),
                         'data' :  dataObj.text[1:23].strip().replace('/',' '),
@@ -107,7 +108,9 @@ def EmCartazPagina(page_id):
     data = []
     for dataBox in soup.find_all("div", class_="card card-entity card-entity-list cf"):
         nomeObj = dataBox.find("h2", class_="meta-title")
-        infoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
+        duracaoObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
+        duracaoObj = duracaoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip()
+        duracaoObj = duracaoObj.text[1:8]
         imgObj = dataBox.find(class_="thumbnail ")
         sinopseObj = dataBox.find("div", class_="synopsis")
         dataObj = dataBox.find(class_="meta-body").find(class_="meta-body-item meta-body-info")
@@ -120,7 +123,7 @@ def EmCartazPagina(page_id):
         fullSinopse = soupMovieDetail.find(class_="synopsis-txt")        
 
         data.append({   'nome': nomeObj.text.strip(),
-                        'duracao': infoObj.text[23:500].strip().replace('/',' ').replace('\n','').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').replace('  ',' ').strip().text[1:8],
+                        'duracao': duracaoObj,
                         'poster' : imgObj.img['data-src'].strip(),
                         'sinopse' : sinopseObj.text.strip(),
                         'data' :  dataObj.text[1:23].strip().replace('/',' '),
